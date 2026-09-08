@@ -43,7 +43,7 @@ RUN cargo build --release -p goose-cli --bin goose \
 FROM scratch AS goose-dist
 COPY --from=goose-builder /usr/local/bin/goose /usr/local/bin/goose
 
-FROM ${GOOSE_IMAGE} AS goose
+FROM goose-dist AS goose
 
 # --- Build stage ---
 FROM golang:1.26 AS builder
